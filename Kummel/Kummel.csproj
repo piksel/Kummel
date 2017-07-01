@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AB9E87A-269C-438D-B578-0B1790E1BA99}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibKummel</RootNamespace>
-    <AssemblyName>LibKummel</AssemblyName>
+    <ProjectGuid>{28A08A63-84C5-4E36-A521-3C7A3B26FE1E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Kummel</RootNamespace>
+    <AssemblyName>Kummel</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AssemblyVersion>1.0.17182.92</AssemblyVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AssemblyVersion>1.0.17182.75</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,10 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,40 +47,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgParser.cs" />
-    <Compile Include="Dialogs.cs" />
-    <Compile Include="FormInputBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormInputBox.Designer.cs">
-      <DependentUpon>FormInputBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormListBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormListBox.Designer.cs">
-      <DependentUpon>FormListBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListDialogType.cs" />
-    <Compile Include="ListItem.cs" />
-    <Compile Include="MenuButtonList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MenuButtonList.Designer.cs">
-      <DependentUpon>MenuButtonList.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Program.Arguments.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FormInputBox.resx">
-      <DependentUpon>FormInputBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormListBox.resx">
-      <DependentUpon>FormListBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuButtonList.resx">
-      <DependentUpon>MenuButtonList.cs</DependentUpon>
+    <None Include="App.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibKummel\LibKummel.csproj">
+      <Project>{2AB9E87A-269C-438D-B578-0B1790E1BA99}</Project>
+      <Name>LibKummel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
